@@ -31,6 +31,10 @@ func (r *DNSResolver) Resolve(ctx context.Context, name string, options ...opts.
 	return resolve(ctx, r, name, opts.ProcessOpts(options), "/ipns/")
 }
 
+func (r *DNSResolver) ResolveAsync(ctx context.Context, name string, options ...opts.ResolveOpt) <-chan Result {
+	return resolveAsync(ctx, r, name, opts.ProcessOpts(options), "/ipns/")
+}
+
 type lookupRes struct {
 	path  path.Path
 	error error
